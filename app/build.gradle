@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+
+    defaultConfig {
+//        applicationId "github.nisrulz.samplezentone"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName '1.0'
+//        jackOptions {
+//            enabled false
+//        }
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable false
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
+    }
+    aaptOptions {
+        noCompress "tflite"
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //    compile 'com.github.nisrulz:zentone:1.0.3'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    testImplementation 'org.testng:testng:6.9.6'
+    androidTestImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'org.tensorflow:tensorflow-lite:0.0.0-nightly'
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
