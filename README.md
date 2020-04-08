@@ -51,3 +51,6 @@ Data preprocess:
 Pre Emphasis = 0.95
 Write in Float32
 Stride factor= 0.5
+
+trained model(rmsprop) 
+https://drive.google.com/open?id=1EYoOj-fpD5ELBbNgVWqF0ooeqZY9l11O
