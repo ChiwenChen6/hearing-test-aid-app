@@ -178,13 +178,15 @@ public class SpeechActivity extends Activity
     //modelName = modelNames[0];
     //tfliteOptions.setNumThreads(numThreads);
     //modelLabel.setText(modelName.substring(0,modelName.length()-3));
-        /*try {
-            GpuDelegate delegate = new GpuDelegate();
-            Interpreter.Options options = (new Interpreter.Options()).addDelegate(delegate);
-            tflite = new Interpreter(loadModelFile(),options);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
+
+
+    /*try {
+        GpuDelegate delegate = new GpuDelegate();
+        Interpreter.Options options = (new Interpreter.Options()).addDelegate(delegate);
+        tflite = new Interpreter(loadModelFile(),options);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }*/
     switchModel.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
@@ -226,6 +228,7 @@ public class SpeechActivity extends Activity
 
 
     String actualModelFilename = MODEL_FILENAME.split("file:///android_asset/", -1)[1];
+
     if(modelName!=null)
       actualModelFilename=modelName;
     try {
@@ -706,7 +709,9 @@ public class SpeechActivity extends Activity
     }
   }
 
-
+   public void stop() {
+     tfliterun = null;
+   }
   public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
     backgroundHandler.post(() -> tfLite.setUseNNAPI(isChecked));
     if (isChecked) apiSwitchCompat.setText("NNAPI");
