@@ -113,7 +113,7 @@ public class SpeechActivity extends Activity
   private LinearLayout gestureLayout;
   private BottomSheetBehavior sheetBehavior;
   private TextView modelLabel;
-  private Button switchModel;
+  private Button switchModel,StartSpeechBtn;
   private Interpreter tfLite;
   private ImageView bottomSheetArrowImageView;
   public static int[] RealLeftValue = new int[100];
@@ -170,6 +170,8 @@ public class SpeechActivity extends Activity
     initChart2();
     modelLabel = (TextView) findViewById(R.id.model_label);
     switchModel = (Button) findViewById(R.id.switch_model);
+    StartSpeechBtn= (Button) findViewById(R.id.StartSpeechBtn);
+
     try{
       modelNames = getAssets().list("models");
     } catch (IOException e){
@@ -178,7 +180,6 @@ public class SpeechActivity extends Activity
     //modelName = modelNames[0];
     //tfliteOptions.setNumThreads(numThreads);
     //modelLabel.setText(modelName.substring(0,modelName.length()-3));
-
 
     /*try {
         GpuDelegate delegate = new GpuDelegate();
@@ -190,6 +191,8 @@ public class SpeechActivity extends Activity
     switchModel.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
+        StartSpeechBtn.setEnabled(true);
+        stopRecording();
         switchModelDialog().show();
         Toast.makeText(SpeechActivity.this,"load succesed", Toast.LENGTH_SHORT).show();
 
@@ -242,8 +245,15 @@ public class SpeechActivity extends Activity
 
     // Start the recording and recognition threads.
     requestMicrophonePermission();
-    startRecording();
-    startRecognition();
+    StartSpeechBtn.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        startRecording();
+        startRecognition();
+        StartSpeechBtn.setEnabled(false);
+      }
+
+    });
 
     sampleRateTextView = findViewById(R.id.sample_rate);
     inferenceTimeTextView = findViewById(R.id.inference_info);
@@ -331,8 +341,8 @@ public class SpeechActivity extends Activity
     if (requestCode == REQUEST_RECORD_AUDIO
         && grantResults.length > 0
         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-      startRecording();
-      startRecognition();
+      //startRecording();
+      //startRecognition();
     }
   }
 
