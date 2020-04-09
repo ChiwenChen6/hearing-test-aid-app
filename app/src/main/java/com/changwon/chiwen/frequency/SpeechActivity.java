@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.graphics.Color;
@@ -168,15 +169,16 @@ public class SpeechActivity extends Activity
     lineChart2 = findViewById(R.id.line_chart2);
     initChart();
     initChart2();
+
     modelLabel = (TextView) findViewById(R.id.model_label);
     switchModel = (Button) findViewById(R.id.switch_model);
     StartSpeechBtn= (Button) findViewById(R.id.StartSpeechBtn);
 
-    try{
+    /*try{
       modelNames = getAssets().list("models");
     } catch (IOException e){
       Toast.makeText(SpeechActivity.this,"models folder not found", Toast.LENGTH_SHORT).show();
-    }
+    }*/
     //modelName = modelNames[0];
     //tfliteOptions.setNumThreads(numThreads);
     //modelLabel.setText(modelName.substring(0,modelName.length()-3));
@@ -193,6 +195,8 @@ public class SpeechActivity extends Activity
       public void onClick(View view) {
         StartSpeechBtn.setEnabled(true);
         stopRecording();
+        //stopBackgroundThread();
+        stopRecognition();
         switchModelDialog().show();
         Toast.makeText(SpeechActivity.this,"load succesed", Toast.LENGTH_SHORT).show();
 
@@ -231,7 +235,6 @@ public class SpeechActivity extends Activity
 
 
     String actualModelFilename = MODEL_FILENAME.split("file:///android_asset/", -1)[1];
-
     if(modelName!=null)
       actualModelFilename=modelName;
     try {
@@ -248,9 +251,9 @@ public class SpeechActivity extends Activity
     StartSpeechBtn.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
+        StartSpeechBtn.setEnabled(false);
         startRecording();
         startRecognition();
-        StartSpeechBtn.setEnabled(false);
       }
 
     });

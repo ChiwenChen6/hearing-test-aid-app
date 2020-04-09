@@ -24,6 +24,7 @@ public class MainTest extends AppCompatActivity {
     // private EditText editTextDuration;
     private TextView textViewvol;
     private TextView textViewFreq;
+    private TextView sideValue;
     // private EditText editTextVol;
     Boolean trigger = true;
     Boolean Ready = false;
@@ -114,6 +115,7 @@ public class MainTest extends AppCompatActivity {
         FqValue = (TextView) findViewById(R.id.FrequencyValue);
         StartText = (TextView)findViewById(R.id.starttext);
         TestTitle = (TextView)findViewById(R.id.testtitle);
+        sideValue = (TextView)findViewById(R.id.sideValue);
 
 
 //        Test = (TextView)findViewById(R.id.woogitest);
@@ -372,6 +374,8 @@ public class MainTest extends AppCompatActivity {
             }
 
             if (msg.what == 2) {
+                sideValue.setText("右耳");
+                sideValue.setTextColor(Color.parseColor("primary_text"));
                 LeftValue[LeftCount] = MindB;
 //                LText.setText(Left + " " + LeftValue[LeftCount] + "dB");
                 LeftCount++;
@@ -388,6 +392,8 @@ public class MainTest extends AppCompatActivity {
             }
 
             if (msg.what == 3) {
+                sideValue.setText("左耳");
+                sideValue.setTextColor(Color.parseColor("primary_text"));
                 RightValue[RightCount] = MindB;
 //                RText.setText(Right + " " + RightValue[RightCount] + "dB");
                 RightCount++;
