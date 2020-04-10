@@ -10,25 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a2c8bc5-a3d7-4cea-9781-9dd7f122b02b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hearing_Test-hearing-test-aid-app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/Equalizer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/MainTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/SpeechActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/SpeechActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_equalizer.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main_test.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main_test.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_speech.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_speech.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,10 +40,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/SpeechActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="162" column="4" selection-start-line="162" selection-start-column="4" selection-end-line="162" selection-end-column="17" />
+            <state relative-caret-position="201">
+              <caret line="1086" selection-start-line="1086" selection-end-line="1086" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#13160#13161#0" expanded="true" />
+                <element signature="e#13218#13219#0" expanded="true" />
+                <element signature="e#16184#16185#0" expanded="true" />
+                <element signature="e#16245#16246#0" expanded="true" />
+                <element signature="e#26126#26127#0" expanded="true" />
+                <element signature="e#26152#26153#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -70,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/MainTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+              <caret line="118" selection-start-line="118" selection-end-line="118" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,17 +67,17 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_speech.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+            <state relative-caret-position="296">
+              <caret line="117" selection-start-line="117" selection-end-line="117" />
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main_test.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2576">
@@ -114,7 +103,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
-              <caret line="158" column="24" lean-forward="true" selection-start-line="158" selection-start-column="24" selection-end-line="158" selection-end-column="24" />
+              <caret line="158" column="24" selection-start-line="158" selection-start-column="24" selection-end-line="158" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -232,7 +221,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/processor_add.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_speech.xml" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_equalizer.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/Function.java" />
@@ -245,13 +233,14 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values-w820dp/string_frequency.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values-w820dp/arrays.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/Equalizer.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/SpeechActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/MainTest.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main_test.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/SpeechActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_speech.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1592" />
     <option name="y" value="129" />
     <option name="width" value="1376" />
@@ -470,7 +459,7 @@
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="6" weight="0.3885246" />
       <window_info anchor="bottom" id="Android Profiler" order="7" weight="0.32974428" />
-      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.32786885" />
+      <window_info anchor="bottom" id="Run" order="8" visible="true" weight="0.33114755" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.32839838" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
       <window_info anchor="right" id="Gradle" order="1" />
@@ -759,25 +748,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
-          <caret line="158" column="24" lean-forward="true" selection-start-line="158" selection-start-column="24" selection-end-line="158" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_speech.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/SpeechActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="162" column="4" selection-start-line="162" selection-start-column="4" selection-end-line="162" selection-end-column="17" />
+          <caret line="158" column="24" selection-start-line="158" selection-start-column="24" selection-end-line="158" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -787,7 +758,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/MainTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+          <caret line="118" selection-start-line="118" selection-end-line="118" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -799,6 +770,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2576">
           <caret line="261" selection-start-line="261" selection-end-line="261" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/changwon/chiwen/frequency/SpeechActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="1086" selection-start-line="1086" selection-end-line="1086" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#13160#13161#0" expanded="true" />
+            <element signature="e#13218#13219#0" expanded="true" />
+            <element signature="e#16184#16185#0" expanded="true" />
+            <element signature="e#16245#16246#0" expanded="true" />
+            <element signature="e#26126#26127#0" expanded="true" />
+            <element signature="e#26152#26153#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_speech.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="117" selection-start-line="117" selection-end-line="117" />
         </state>
       </provider>
     </entry>

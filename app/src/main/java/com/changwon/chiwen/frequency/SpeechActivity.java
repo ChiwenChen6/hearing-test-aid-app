@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.pm.PackageManager;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.graphics.Color;
@@ -61,7 +61,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * by default a small set of action words.
  */
 public class SpeechActivity extends Activity
-     {
+{
   private processor_add mProcessor;
 
 
@@ -123,15 +123,15 @@ public class SpeechActivity extends Activity
 
 
   private TextView yesTextView,
-      noTextView,
-      upTextView,
-      downTextView,
-      leftTextView,
-      rightTextView,
-      onTextView,
-      offTextView,
-      stopTextView,
-      goTextView;
+          noTextView,
+          upTextView,
+          downTextView,
+          leftTextView,
+          rightTextView,
+          onTextView,
+          offTextView,
+          stopTextView,
+          goTextView;
   private TextView sampleRateTextView, inferenceTimeTextView;
   private ImageView plusImageView, minusImageView;
   private SwitchCompat apiSwitchCompat;
@@ -144,11 +144,11 @@ public class SpeechActivity extends Activity
   AudioTrack audioTrack;
   int playBufSize;
   private String modelName;
-   String[] modelNames;
+  String[] modelNames;
 
   /** Memory-map the model file in Assets. */
   private static MappedByteBuffer loadModelFile(AssetManager assets, String modelFilename)
-      throws IOException {
+          throws IOException {
     AssetFileDescriptor fileDescriptor = assets.openFd(modelFilename);
     FileInputStream inputStream = new FileInputStream(fileDescriptor.getFileDescriptor());
     FileChannel fileChannel = inputStream.getChannel();
@@ -159,37 +159,40 @@ public class SpeechActivity extends Activity
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    // Set up the UI.
+
     RealLeftValue = MainTest.RealLeftValue;
     RealRightValue = MainTest.RealRightValue;
+    if(RealLeftValue==null){RealLeftValue[0]=0;}
 
+    // Set up the UI.
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_speech);
     lineChart = findViewById(R.id.line_chart);
     lineChart2 = findViewById(R.id.line_chart2);
     initChart();
     initChart2();
+    //Toast.makeText(SpeechActivity.this,RealRightValue[0], Toast.LENGTH_SHORT).show();
 
     modelLabel = (TextView) findViewById(R.id.model_label);
     switchModel = (Button) findViewById(R.id.switch_model);
     StartSpeechBtn= (Button) findViewById(R.id.StartSpeechBtn);
 
-    /*try{
+    try{
       modelNames = getAssets().list("models");
     } catch (IOException e){
       Toast.makeText(SpeechActivity.this,"models folder not found", Toast.LENGTH_SHORT).show();
-    }*/
+    }
     //modelName = modelNames[0];
+
     //tfliteOptions.setNumThreads(numThreads);
     //modelLabel.setText(modelName.substring(0,modelName.length()-3));
-
-    /*try {
-        GpuDelegate delegate = new GpuDelegate();
-        Interpreter.Options options = (new Interpreter.Options()).addDelegate(delegate);
-        tflite = new Interpreter(loadModelFile(),options);
-    } catch (IOException e) {
-        e.printStackTrace();
-    }*/
+        /*try {
+            GpuDelegate delegate = new GpuDelegate();
+            Interpreter.Options options = (new Interpreter.Options()).addDelegate(delegate);
+            tflite = new Interpreter(loadModelFile(),options);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
     switchModel.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
@@ -198,7 +201,7 @@ public class SpeechActivity extends Activity
         //stopBackgroundThread();
         stopRecognition();
         switchModelDialog().show();
-        Toast.makeText(SpeechActivity.this,"load succesed", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(SpeechActivity.this,"load succesed", Toast.LENGTH_SHORT).show();
 
       }
     });
@@ -225,13 +228,13 @@ public class SpeechActivity extends Activity
 
     // Set up an object to smooth recognition results to increase accuracy.
     recognizeCommands =
-        new RecognizeCommands(
-            labels,
-            AVERAGE_WINDOW_DURATION_MS,
-            DETECTION_THRESHOLD,
-            SUPPRESSION_MS,
-            MINIMUM_COUNT,
-            MINIMUM_TIME_BETWEEN_SAMPLES_MS);
+            new RecognizeCommands(
+                    labels,
+                    AVERAGE_WINDOW_DURATION_MS,
+                    DETECTION_THRESHOLD,
+                    SUPPRESSION_MS,
+                    MINIMUM_COUNT,
+                    MINIMUM_TIME_BETWEEN_SAMPLES_MS);
 
 
     String actualModelFilename = MODEL_FILENAME.split("file:///android_asset/", -1)[1];
@@ -251,9 +254,9 @@ public class SpeechActivity extends Activity
     StartSpeechBtn.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        StartSpeechBtn.setEnabled(false);
         startRecording();
         startRecognition();
+        StartSpeechBtn.setEnabled(false);
       }
 
     });
@@ -284,46 +287,46 @@ public class SpeechActivity extends Activity
 
     ViewTreeObserver vto = gestureLayout.getViewTreeObserver();
     vto.addOnGlobalLayoutListener(
-        new ViewTreeObserver.OnGlobalLayoutListener() {
-          @Override
-          public void onGlobalLayout() {
-            gestureLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-            int height = gestureLayout.getMeasuredHeight();
+            new ViewTreeObserver.OnGlobalLayoutListener() {
+              @Override
+              public void onGlobalLayout() {
+                gestureLayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                int height = gestureLayout.getMeasuredHeight();
 
-            sheetBehavior.setPeekHeight(height);
-          }
-        });
+                sheetBehavior.setPeekHeight(height);
+              }
+            });
     sheetBehavior.setHideable(false);
 
     sheetBehavior.setBottomSheetCallback(
-        new BottomSheetBehavior.BottomSheetCallback() {
-          @Override
-          public void onStateChanged(@NonNull View bottomSheet, int newState) {
-            switch (newState) {
-              
-              case BottomSheetBehavior.STATE_HIDDEN:
-                break;
-              case BottomSheetBehavior.STATE_EXPANDED:
-                {
-                  bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_down);
-                }
-                break;
-              case BottomSheetBehavior.STATE_COLLAPSED:
-                {
-                  bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_up);
-                }
-                break;
-              case BottomSheetBehavior.STATE_DRAGGING:
-                break;
-              case BottomSheetBehavior.STATE_SETTLING:
-                bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_up);
-                break;
-            }
-          }
+            new BottomSheetBehavior.BottomSheetCallback() {
+              @Override
+              public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                switch (newState) {
 
-          @Override
-          public void onSlide(@NonNull View bottomSheet, float slideOffset) {}
-        });
+                  case BottomSheetBehavior.STATE_HIDDEN:
+                    break;
+                  case BottomSheetBehavior.STATE_EXPANDED:
+                  {
+                    bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_down);
+                  }
+                  break;
+                  case BottomSheetBehavior.STATE_COLLAPSED:
+                  {
+                    bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_up);
+                  }
+                  break;
+                  case BottomSheetBehavior.STATE_DRAGGING:
+                    break;
+                  case BottomSheetBehavior.STATE_SETTLING:
+                    bottomSheetArrowImageView.setImageResource(R.drawable.icn_chevron_up);
+                    break;
+                }
+              }
+
+              @Override
+              public void onSlide(@NonNull View bottomSheet, float slideOffset) {}
+            });
 
     plusImageView.setOnClickListener(this::onClick);
     minusImageView.setOnClickListener(this::onClick);
@@ -334,16 +337,16 @@ public class SpeechActivity extends Activity
   private void requestMicrophonePermission() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       requestPermissions(
-          new String[] {android.Manifest.permission.RECORD_AUDIO}, REQUEST_RECORD_AUDIO);
+              new String[] {android.Manifest.permission.RECORD_AUDIO}, REQUEST_RECORD_AUDIO);
     }
   }
 
   @Override
   public void onRequestPermissionsResult(
-      int requestCode, String[] permissions, int[] grantResults) {
+          int requestCode, String[] permissions, int[] grantResults) {
     if (requestCode == REQUEST_RECORD_AUDIO
-        && grantResults.length > 0
-        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            && grantResults.length > 0
+            && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
       //startRecording();
       //startRecognition();
     }
@@ -355,13 +358,13 @@ public class SpeechActivity extends Activity
     }
     shouldContinue = true;
     recordingThread =
-        new Thread(
-            new Runnable() {
-              @Override
-              public void run() {
-                record();
-              }
-            });
+            new Thread(
+                    new Runnable() {
+                      @Override
+                      public void run() {
+                        record();
+                      }
+                    });
     recordingThread.start();
   }
 
@@ -377,9 +380,9 @@ public class SpeechActivity extends Activity
     android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_AUDIO);
 
     // Estimate the buffer size we'll need for this device.
-     int bufferSize =
-        AudioRecord.getMinBufferSize(
-            SAMPLE_RATE, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
+    int bufferSize =
+            AudioRecord.getMinBufferSize(
+                    SAMPLE_RATE, AudioFormat.CHANNEL_IN_MONO, AudioFormat.ENCODING_PCM_16BIT);
     if (bufferSize == AudioRecord.ERROR || bufferSize == AudioRecord.ERROR_BAD_VALUE) {
       bufferSize = SAMPLE_RATE * 2;
     }
@@ -387,12 +390,12 @@ public class SpeechActivity extends Activity
     short[] audioBuffer = new short[bufferSize / 2];
 
     AudioRecord record =
-        new AudioRecord(
-            MediaRecorder.AudioSource.DEFAULT,
-            SAMPLE_RATE,
-            AudioFormat.CHANNEL_IN_MONO,
-            AudioFormat.ENCODING_PCM_16BIT,
-            bufferSize);
+            new AudioRecord(
+                    MediaRecorder.AudioSource.DEFAULT,
+                    SAMPLE_RATE,
+                    AudioFormat.CHANNEL_IN_MONO,
+                    AudioFormat.ENCODING_PCM_16BIT,
+                    bufferSize);
 
     if (record.getState() != AudioRecord.STATE_INITIALIZED) {
       Log.e(LOG_TAG, "Audio Record can't initialize!");
@@ -456,13 +459,13 @@ public class SpeechActivity extends Activity
     }
     shouldContinueRecognition = true;
     recognitionThread =
-        new Thread(
-            new Runnable() {
-              @Override
-              public void run() {
-                recognize();
-              }
-            });
+            new Thread(
+                    new Runnable() {
+                      @Override
+                      public void run() {
+                        recognize();
+                      }
+                    });
     recognitionThread.start();
   }
 
@@ -526,15 +529,15 @@ public class SpeechActivity extends Activity
       processData(inputBuffer);
 
       for (int i = 0; i < RECORDING_LENGTH; ++i) {
-          a[0][i][0] = inputBuffer[i]/ 32767.0f *2;
+        a[0][i][0] = inputBuffer[i]/ 32767.0f *2;
       }
-        System.out.println(a.length);
+      System.out.println(a.length);
 
 
 
-        int b=floatInputBuffer.length;
-        System.out.println(b);
-        //Toast.makeText(SpeechActivity.this, a, Toast.LENGTH_SHORT).show();
+      int b=floatInputBuffer.length;
+      System.out.println(b);
+      //Toast.makeText(SpeechActivity.this, a, Toast.LENGTH_SHORT).show();
 
 
         /*for (int i = 0; i < RECORDING_LENGTH; ++i) {
@@ -550,7 +553,7 @@ public class SpeechActivity extends Activity
       // Run the model.
       //tfLite.runForMultipleInputsOutputs(inputArray, outputMap);
 
-        //tfLite.getInputTensor(1);
+      //tfLite.getInputTensor(1);
       tfliterun  = new Thread(new Runnable() {
         @Override
         public void run() {
@@ -615,6 +618,8 @@ public class SpeechActivity extends Activity
       final short minEQLevel = mEqualizer.getBandLevelRange()[0];//第一個下標為最低的限度範圍
       short maxEQLevel = mEqualizer.getBandLevelRange()[1];  // 第二個下標為最高的限度範圍
       int  EQLevel= maxEQLevel-minEQLevel;
+
+
       for (short i = 0; i < brands; i++)
       {
         // 設定該頻率的均衡值
@@ -643,6 +648,50 @@ public class SpeechActivity extends Activity
 
 
       }
+      /*int a1=RealLeftValue[0];
+      int a2=RealLeftValue[1];
+      int a3=RealLeftValue[3];
+      int a4=RealLeftValue[6];
+      int a5=RealLeftValue[9];
+      int largenum1,largenum2,largenum3,largenum4;
+
+
+      //get the result of test RealLeftValue[1], RealLeftValue[3],((RealLeftValue[6] + RealLeftValue[7]) / 2), RealLeftValue[9]
+
+      largenum1 = Math.max(a1, a2 );
+      largenum2 = Math.max(a3, a4 );
+      largenum3 = Math.max(largenum1, largenum2 );
+      largenum4 = Math.max(largenum3, a5 );
+
+
+      for (short i = 0; i < brands; i++)
+      {
+        // 設定該頻率的均衡值
+        mEqualizer.setBandLevel((short)0,
+                (short) (minEQLevel+( (maxEQLevel- minEQLevel)/largenum4*a1))
+        );
+        // 設定該頻率的均衡值
+        mEqualizer.setBandLevel((short)1,
+                (short) (minEQLevel+((maxEQLevel- minEQLevel)/largenum4*a2))
+        );
+
+        // 設定該頻率的均衡值
+        mEqualizer.setBandLevel((short)2,
+                (short) (minEQLevel+( (maxEQLevel- minEQLevel)/largenum4*a3))
+        );
+
+        // 設定該頻率的均衡值
+        mEqualizer.setBandLevel((short)3,
+                (short) (minEQLevel+ ((maxEQLevel- minEQLevel)/largenum4*a4))
+        );
+
+        // 設定該頻率的均衡值
+        mEqualizer.setBandLevel((short)4,
+                (short) (minEQLevel+ ((maxEQLevel- minEQLevel)/largenum4*a5))
+        );
+
+
+      }*/
 
 
 
@@ -654,15 +703,15 @@ public class SpeechActivity extends Activity
       // Use the smoother to figure out if we've had a real recognition event.
       long currentTime = System.currentTimeMillis();
       final RecognizeCommands.RecognitionResult result =
-          recognizeCommands.processLatestResults(outputScores[0], currentTime);
+              recognizeCommands.processLatestResults(outputScores[0], currentTime);
       lastProcessingTimeMs = new Date().getTime() - startTime;
       runOnUiThread(
-          new Runnable() {
-            @Override
-            public void run() {
+              new Runnable() {
+                @Override
+                public void run() {
 
-            }
-          });
+                }
+              });
 
     }
 
@@ -722,9 +771,7 @@ public class SpeechActivity extends Activity
     }
   }
 
-   public void stop() {
-     tfliterun = null;
-   }
+
   public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
     backgroundHandler.post(() -> tfLite.setUseNNAPI(isChecked));
     if (isChecked) apiSwitchCompat.setText("NNAPI");
@@ -757,7 +804,11 @@ public class SpeechActivity extends Activity
     startBackgroundThread();
   }
 
-   @Override
+  public void stop(){
+    tfliterun = null;
+  }
+
+  @Override
   protected void onStop() {
     super.onStop();
     stopBackgroundThread();
@@ -1011,24 +1062,25 @@ public class SpeechActivity extends Activity
   }
 
 
-   public Dialog switchModelDialog() {
-     AlertDialog.Builder builder = new AlertDialog.Builder(SpeechActivity.this);
-     builder.setTitle("Choose a Model")
-             .setItems(modelNames, new DialogInterface.OnClickListener() {
-               public void onClick(DialogInterface dialog, int which) {
-                 //modelName = modelNames[which];
-                 //tfHelper = new TensorFlowInferenceInterface(getAssets(), "models/" + modelName);
-                 modelLabel.setText(modelName.substring(0,modelName.length()-3));
-                 modelName = modelNames[which];
-                 //tflite = new Interpreter("models/" + modelName);
-                 //catch (IOException e) {
-                 //   e.printStackTrace();
-                 //}
-                 modelLabel.setText(modelName.substring(0,modelName.length()-3));
+  public Dialog switchModelDialog() {
+    AlertDialog.Builder builder = new AlertDialog.Builder(SpeechActivity.this);
+    builder.setTitle("Choose a Model")
+            .setItems(modelNames, new DialogInterface.OnClickListener() {
+              public void onClick(DialogInterface dialog, int which) {
+                //modelName = modelNames[which];
+                //tfHelper = new TensorFlowInferenceInterface(getAssets(), "models/" + modelName);
+                //modelLabel.setText(modelName.substring(0,modelName.length()-3));
+                Toast.makeText(SpeechActivity.this,RealLeftValue[0], Toast.LENGTH_SHORT).show();
+                modelName = modelNames[which];
+                try{tfLite = new Interpreter(loadModelFile(getAssets(),"models/" + modelName));}
+                catch (IOException e) {
+                  e.printStackTrace();
+                }
+                modelLabel.setText(modelName);
 
-               }
-             });
-     return builder.create();
-   }
+              }
+            });
+    return builder.create();
+  }
 }
 

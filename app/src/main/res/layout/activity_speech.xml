@@ -15,25 +15,35 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_alignParentTop="true"
             android:background="@color/toolbar_bg"/>
+
         <TextView
             android:id="@+id/Model"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Model: "
-            android:textSize="17sp"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true" />
+            android:text="Model: "
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+            android:textColor="@color/accent"
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/model_label"
             android:layout_width="wrap_content"
+
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_below="@+id/Model"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="-52dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_toRightOf="@id/Model"
             android:scrollHorizontally="false"
-            android:text="None"
-            android:textSize="15sp" />
+            android:text="Default"
+            android:textColor="@color/accent"
+            android:textSize="14sp" />
+
         <Button
             android:id="@+id/switch_model"
             android:layout_width="wrap_content"
@@ -76,9 +86,10 @@
 
             </LinearLayout>
             <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/line_chart"
-            android:layout_width="366dp"
-            android:layout_height="221dp" />
+                android:id="@+id/line_chart"
+                android:layout_width="366dp"
+                android:layout_height="221dp" />
+
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/line_chart2"
                 android:layout_width="366dp"
