@@ -85,6 +85,7 @@ public class SpeechActivity extends Activity
   public static final double DB_BASELINE = Math.pow(2, 15) * FFT_SIZE * Math.sqrt(2);
 
   private Equalizer mEqualizer;
+  int aac;
 
 
 
@@ -160,9 +161,13 @@ public class SpeechActivity extends Activity
   @Override
   protected void onCreate(Bundle savedInstanceState) {
 
+    for (aac=0;aac<10;aac=aac+1) {
+      RealLeftValue[aac] = 0;
+      RealRightValue[aac] = 0;
+    }
     RealLeftValue = MainTest.RealLeftValue;
     RealRightValue = MainTest.RealRightValue;
-    if(RealLeftValue==null){RealLeftValue[0]=0;}
+
 
     // Set up the UI.
     super.onCreate(savedInstanceState);
@@ -620,7 +625,7 @@ public class SpeechActivity extends Activity
       int  EQLevel= maxEQLevel-minEQLevel;
 
 
-      for (short i = 0; i < brands; i++)
+      /*for (short i = 0; i < brands; i++)
       {
         // 設定該頻率的均衡值
         mEqualizer.setBandLevel((short)0,
@@ -647,8 +652,8 @@ public class SpeechActivity extends Activity
         );
 
 
-      }
-      /*int a1=RealLeftValue[0];
+      }*/
+      int a1=RealLeftValue[0];
       int a2=RealLeftValue[1];
       int a3=RealLeftValue[3];
       int a4=RealLeftValue[6];
@@ -668,30 +673,30 @@ public class SpeechActivity extends Activity
       {
         // 設定該頻率的均衡值
         mEqualizer.setBandLevel((short)0,
-                (short) (minEQLevel+( (maxEQLevel- minEQLevel)/largenum4*a1))
+                (short) (((minEQLevel+maxEQLevel)/2)+(a1*100))
         );
         // 設定該頻率的均衡值
         mEqualizer.setBandLevel((short)1,
-                (short) (minEQLevel+((maxEQLevel- minEQLevel)/largenum4*a2))
+                (short) (((minEQLevel+maxEQLevel)/2)+(a2*100))
         );
 
         // 設定該頻率的均衡值
         mEqualizer.setBandLevel((short)2,
-                (short) (minEQLevel+( (maxEQLevel- minEQLevel)/largenum4*a3))
+                (short) (((minEQLevel+maxEQLevel)/2)+(a3*100))
         );
 
         // 設定該頻率的均衡值
         mEqualizer.setBandLevel((short)3,
-                (short) (minEQLevel+ ((maxEQLevel- minEQLevel)/largenum4*a4))
+                (short)(((minEQLevel+maxEQLevel)/2)+ (a4*100))
         );
 
         // 設定該頻率的均衡值
         mEqualizer.setBandLevel((short)4,
-                (short) (minEQLevel+ ((maxEQLevel- minEQLevel)/largenum4*a5))
+                (short) (((minEQLevel+maxEQLevel)/2)+ (a5*100))
         );
 
 
-      }*/
+      }
 
 
 
@@ -1070,7 +1075,7 @@ public class SpeechActivity extends Activity
                 //modelName = modelNames[which];
                 //tfHelper = new TensorFlowInferenceInterface(getAssets(), "models/" + modelName);
                 //modelLabel.setText(modelName.substring(0,modelName.length()-3));
-                Toast.makeText(SpeechActivity.this,RealLeftValue[0], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SpeechActivity.this,RealLeftValue[0], Toast.LENGTH_SHORT).show();
                 modelName = modelNames[which];
                 try{tfLite = new Interpreter(loadModelFile(getAssets(),"models/" + modelName));}
                 catch (IOException e) {

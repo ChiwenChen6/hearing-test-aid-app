@@ -24,7 +24,7 @@ public class MainTest extends AppCompatActivity {
     // private EditText editTextDuration;
     private TextView textViewvol;
     private TextView textViewFreq;
-    private TextView sideValue;
+
     // private EditText editTextVol;
     Boolean trigger = true;
     Boolean Ready = false;
@@ -67,6 +67,7 @@ public class MainTest extends AppCompatActivity {
     TextView Test;
     TextView StartText;
     TextView TestTitle;
+    TextView sideValue1;
 
     String Left;
     String Right;
@@ -115,7 +116,7 @@ public class MainTest extends AppCompatActivity {
         FqValue = (TextView) findViewById(R.id.FrequencyValue);
         StartText = (TextView)findViewById(R.id.starttext);
         TestTitle = (TextView)findViewById(R.id.testtitle);
-        sideValue = (TextView)findViewById(R.id.sideValue);
+        sideValue1 = (TextView)findViewById(R.id.sideValue);
 
 
 //        Test = (TextView)findViewById(R.id.woogitest);
@@ -345,6 +346,7 @@ public class MainTest extends AppCompatActivity {
                     FqValue.setText("頻率 :" + number[FqCount]);
                     FqValue.setTextColor(Color.parseColor("#FF05FF"));
 
+
                     count = 0;
                     TextReady = false;
                     ClickEvent = false;
@@ -374,8 +376,8 @@ public class MainTest extends AppCompatActivity {
             }
 
             if (msg.what == 2) {
-                sideValue.setText("右耳");
-                sideValue.setTextColor(Color.parseColor("primary_text"));
+                sideValue1.setText("右耳聆聽");
+                sideValue1.setTextColor(Color.parseColor("#FF00FF"));
                 LeftValue[LeftCount] = MindB;
 //                LText.setText(Left + " " + LeftValue[LeftCount] + "dB");
                 LeftCount++;
@@ -392,8 +394,8 @@ public class MainTest extends AppCompatActivity {
             }
 
             if (msg.what == 3) {
-                sideValue.setText("左耳");
-                sideValue.setTextColor(Color.parseColor("primary_text"));
+                sideValue1.setText("左耳聆聽");
+                sideValue1.setTextColor(Color.parseColor("#FF00FF"));
                 RightValue[RightCount] = MindB;
 //                RText.setText(Right + " " + RightValue[RightCount] + "dB");
                 RightCount++;

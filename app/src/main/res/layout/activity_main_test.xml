@@ -42,7 +42,7 @@
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:padding="10dp"
-        android:text="0"
+        android:text=" "
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffffff"
@@ -132,10 +132,10 @@
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:padding="10dp"
-        android:text="準備 左耳聆聽"
+        android:text="準備 左耳開始聆聽"
+        android:textSize="20sp"
         android:textAlignment="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/primary_text"
+        android:textColor='#FF00FF'
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -154,7 +154,7 @@
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:padding="10dp"
-        android:text="0"
+        android:text=" "
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffffff"
@@ -230,7 +230,7 @@
             android:layout_marginTop="15dp"
             android:text="Hearing test"
             android:textColor="#ffffff"
-            android:textSize="17sp" />
+            android:textSize="27sp" />
 
     </RelativeLayout>
 
